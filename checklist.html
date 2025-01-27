@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Machine Checklist</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f3f3f3;
+      margin: 0;
+    }
+    .container {
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      width: 400px;
+    }
+    h1 {
+      color: #007bff;
+      text-align: center;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      margin: 10px 0;
+      display: flex;
+      align-items: center;
+    }
+    input[type="checkbox"] {
+      margin-right: 10px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Machine Checklist</h1>
+    <form id="checklist-form">
+      <ul>
+        <li>
+          <input type="checkbox" id="check1" />
+          <label for="check1">Inspect machine belts</label>
+        </li>
+        <li>
+          <input type="checkbox" id="check2" />
+          <label for="check2">Check lubrication levels</label>
+        </li>
+        <li>
+          <input type="checkbox" id="check3" />
+          <label for="check3">Ensure safety guards are in place</label>
+        </li>
+        <li>
+          <input type="checkbox" id="check4" />
+          <label for="check4">Test emergency stop button</label>
+        </li>
+        <li>
+          <input type="checkbox" id="check5" />
+          <label for="check5">Check wiring and connections</label>
+        </li>
+        <li>
+          <input type="checkbox" id="check6" />
+          <label for="check6">Verify sensor calibration</label>
+        </li>
+      </ul>
+      <button type="submit">Save Checklist</button>
+    </form>
+  </div>
+
+  <script>
+    // إضافة وظيفة لحفظ التشيك ليست
+    document.getElementById("checklist-form").addEventListener("submit", function (event) {
+      event.preventDefault(); // منع إعادة تحميل الصفحة
+      const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+      let completed = 0;
+
+      checkboxes.forEach(checkbox => {
+        if (checkbox.checked) {
+          completed++;
+        }
+      });
+
+      // إذا أكمل الفني التشيك ليست بالكامل
+      if (completed === checkboxes.length) {
+        // إظهار رسالة التحقق والتوجه لصفحة جديدة
+        alert("Checklist completed successfully!");
+        window.location.href = "completion.html"; // الانتقال لصفحة جديدة بعد النجاح
+      } else {
+        alert(`You have completed ${completed} of ${checkboxes.length} items.`);
+      }
+    });
+  </script>
+</body>
+</html>
